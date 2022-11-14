@@ -1,12 +1,15 @@
+import { HomePage } from './home.po';
 import { browser, element, by, protractor } from 'protractor';
 
 describe('Home Page', () => {
+  let homePage: HomePage;
   beforeEach(async () => {
-    await browser.get(`${browser.baseUrl}/#/user/flavio`);
+    homePage = new HomePage();
+    await homePage.navigateTo();
   });
 
   it('should navigate to user profile', async () => {
-    const title = await browser.getTitle();
+    const title = await homePage.getWindowTitle();
     expect(title).toEqual('Timeline');
     console.log('------> Teste 0');
   });
